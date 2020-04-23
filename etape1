@@ -1,2 +1,70 @@
-test
-abc
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Apr 14 16:31:05 2020
+
+@author: louis_000
+"""
+
+#tkinter est tres specifique donc je te mets
+#plein de commentaires pour que tu comprennes bien 
+#ce que j'ai fait
+
+
+
+from tkinter import *
+
+#creation de la fenetre ou se deroule le jeu
+fenetre = Tk()
+
+#les label sont les equivalents de print pour tkinter
+label = Label(fenetre, text="Choisis ton crush")
+
+# .pack() sert à afficher l'element dans la fenetre sinon on ne voit pas
+label.pack()
+
+
+
+#les frames de la fenetre sont des blocs ou tu peux grouper du texte,des images,etc
+#les frames sont independantes les unes des autres 
+
+
+###FRAME DU PREMIER PERSONNAGE
+Frame1 = Frame(fenetre, borderwidth=2, relief=GROOVE)
+#pour la position, padx et pady sont tres importants
+#car il permettent de centrer ton element
+Frame1.pack(side=LEFT, padx=30, pady=30)
+
+
+
+#les canvas contiennent et animent les images
+
+###PHOTO PERSONNAGE (DANS LA FRAME)
+canvas1 = Canvas(Frame1, width=100, height=100, background="#FFFFFF")
+Sasuke = PhotoImage(file="Sasuke.png").zoom(35).subsample(32)
+Photo_Sasuke = canvas1.create_image(50,290, image=Sasuke)                                          
+canvas1.pack()
+
+
+#la fonction suivante se declenche lorsque le bouton Sasuke est pressé
+def Choisir():
+    
+    #on fait apparaitre une nouvelle frame dans la fenetre
+    frame_sasuke=Frame(fenetre)
+    Label(frame_sasuke, text="Sasuke semble distant mais il a un grand coeur.").pack(padx=10, pady=10)
+    Label(frame_sasuke, text="Voulez-vous commencer à discuter avec Sasuke?.").pack(padx=10, pady=10)
+    bouton_oui = Button(frame_sasuke, text="oui", font=("Tahoma", 12), bg="#BE2121", fg ="white" , width=20)
+    bouton_non = Button(frame_sasuke, text="non", font=("Tahoma", 12), bg="#BE2121", fg ="white" , width=20)
+    frame_sasuke.pack(side=RIGHT)
+    bouton_oui.pack()
+    bouton_non.pack()
+    
+bouton_sasuke = Button(Frame1, text="Sasuke", font=("Tahoma", 12), bg="#BE2121", fg ="white" , width=40, command=Choisir)
+bouton_sasuke.pack()
+
+
+
+
+fenetre.mainloop()
+               
+               
+             
