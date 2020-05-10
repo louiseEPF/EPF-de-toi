@@ -1,0 +1,5 @@
+﻿Quelle est ta couleur préférée?
+noir
+rouge
+bleue 
+jaune
